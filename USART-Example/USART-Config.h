@@ -13,6 +13,8 @@
 #define BAUD 9600
 #define MYUBRR F_CPU/16/BAUD-1
 
+//Asynchronous
+ 
 void USART_Init(unsigned int ubrr) {
 	UBRRH = (unsigned char)(ubrr >> 8); /*setting baud rate*/
 	UBRRL = (unsigned char)ubrr;        
@@ -30,6 +32,8 @@ void USART_Transmit(unsigned char data) {
 unsigned char USART_Receive(void) {
 	while (!(UCSRA & (1<<RXC))); // Wait for data to be received
 	return UDR; // Get and return received data from buffer
+	
+	
 }
 
 
